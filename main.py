@@ -16,12 +16,15 @@ def obtener_informacion_servicio(codigo_servicio):
     return data
 
 def get_next_event(service):
-    # Obtener la información relevante del servicio
-    codigo_servicio = service['codigo_servicio']
-    # Lógica para obtener el siguiente evento a partir del código del servicio
-    # Aquí se incluiría tu lógica específica para obtener el próximo evento
+    try:
+        codigo_servicio = service['codigo_servicio']
+    except KeyError as e:
+        print(f"Error: Clave 'codigo_servicio' no encontrada en el diccionario 'service'")
+        print("Contenido del diccionario 'service':")
+        print(service)
+        return []
     
-    # Ejemplo de lógica simple para generar eventos ficticios
+    # Resto de la lógica para obtener el siguiente evento a partir del código del servicio
     eventos = [
         {
             'codigo_servicio': codigo_servicio,
